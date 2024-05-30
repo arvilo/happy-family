@@ -32,4 +32,42 @@ public class Human {
         this("","",1990);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    @Override
+    public String toString() {
+
+        String motherName,motherSurname,fatherName,fatherSurname;
+
+        if (mother == null) {
+            motherName = "";
+            motherSurname = "";
+        }
+        else {
+            motherName = mother.getName();
+            motherSurname = mother.getSurname();
+        }
+
+        if (father == null) {
+            fatherName = "";
+            fatherSurname = "";
+        }
+        else {
+            fatherName = father.getName();
+            fatherSurname = father.getSurname();
+        }
+
+        return "Human{name='" + name + "', surname='" + surname
+                +"', year=" + year +", iq=" + iq +", mother="
+                + motherName + " " + motherSurname
+                + ", father=" + fatherName + " " + fatherSurname
+                + ", pet=" + pet + "}";
+    }
+
 }

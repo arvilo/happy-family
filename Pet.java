@@ -16,7 +16,7 @@ public class Pet {
     }
 
     public Pet(String species,String nickname) {
-        this(species,nickname,0,0,null);
+        this(species,nickname,0,0,new String[0]);
     }
 
     public Pet() {
@@ -48,7 +48,7 @@ public class Pet {
         }
         habits.append("]");
 
-        return "dog{nickname='"+ nickname +"', age=" + age +
+        return species + "{nickname='"+ nickname +"', age=" + age +
                 ", trickLevel=" + trickLevel + ", habits=" + habits + "}";
     }
 }
