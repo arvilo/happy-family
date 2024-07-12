@@ -11,12 +11,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Testing start");
-        DeleteMethodTest dmt = new DeleteMethodTest();
-        dmt.setUp();
-        dmt.testDeleteMethod();
-        System.out.println("Testing end");
-
         String[][] fatherSchedule = new String[10][2];
         fatherSchedule[0][0] = DayOfWeek.MONDAY.name();
         fatherSchedule[0][1] = "Wake up, breakfast, and morning routine";
