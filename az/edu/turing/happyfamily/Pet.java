@@ -2,36 +2,34 @@ package az.edu.turing.happyfamily;
 
 import java.util.Arrays;
 
-public class Pet {
+public abstract class Pet {
     private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private String[] habits;
 
-    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
-        this.species = species;
+    public Pet(String nickname, int age, int trickLevel, String[] habits) {
+        this.species = Species.UNKNOWN;
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
         this.habits = habits;
     }
 
-    public Pet(Species species, String nickname) {
-        this(species, nickname, 0, 0, new String[0]);
+    public Pet(String nickname) {
+        this(nickname, 0, 0, new String[0]);
     }
 
     public Pet() {
-        this(null, "");
+        this("");
     }
 
     public void eat() {
         System.out.println("I am eating");
     }
 
-    public void respond() {
-        System.out.println("Hello, owner. I am - " + nickname + ". I miss you!");
-    }
+    public abstract void respond();
 
     public void foul() {
         System.out.println("I need to cover it up");

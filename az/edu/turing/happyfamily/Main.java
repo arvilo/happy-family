@@ -135,14 +135,14 @@ public class Main {
         petHabits[0] = "human biting";
         petHabits[1] = "sleeping";
 
-        Pet pet = new Pet(Species.CAT,
-                "Kotlet",
-                0,
-                2,
-                petHabits);
+//        Pet pet = new Pet(Species.CAT,
+//                "Kotlet",
+//                0,
+//                2,
+//                petHabits);
 
         System.out.println("\nSetting pet");
-        family.setPet(pet);
+//        family.setPet(pet);
         System.out.println(family);
 
 
