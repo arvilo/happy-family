@@ -27,14 +27,14 @@ Improve the project:
   the `main` method), use the `name()` enumeration method, which returns the string representation of the current
   enumeration. +
 - Add the following methods, while keeping in mind that you may have both a positive and a negative scenario of the
-  execution:+
+  execution:
 - `toString` - check if the methods return a specific string for a specific object:
-    - `deleteChild(Human child)` - do 2 checks:+
+    - `deleteChild(Human child)` - do 2 checks:
         - check if the child is actually being removed from the `children` array (if you pass an object that is
-          equivalent to at least one element of the array);+
+          equivalent to at least one element of the array);
         - check if the `children` array remains unchanged (if you pass an object that is not equivalent to any array
           element)
-    - `deleteChild(int index)` - do 2 checks:+
+    - `deleteChild(int index)` - do 2 checks:
         - check that the child is actually being removed from the `children` array and the method returns the correct
           value;
         - check that the `children` array remains unchanged (if you pass an index outside the index range) and the
@@ -42,7 +42,7 @@ Improve the project:
     - `addChild` - check that the  `children` array increases by one element and that this element is the passed object
       with all the necessary references;
     - `countFamily` - check if the method returns the correct number of family members
-- Cover the further project changes with tests.+
+- Cover the further project changes with tests.
 
 #### Non-obligatory task with advanced complexity:
 
