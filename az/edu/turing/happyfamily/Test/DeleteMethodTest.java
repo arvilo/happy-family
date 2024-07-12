@@ -14,13 +14,13 @@ public class DeleteMethodTest {
 
     @BeforeEach
     public void setUp() {
-        Human father = new Human("Javid",
+        Man father = new Man("Javid",
                 "Aliyev",
                 1992,
                 94,
                 null);
 
-        Human mother = new Human("Bahar",
+        Woman mother = new Woman("Bahar",
                 "Aliyeva",
                 1995,
                 90,
@@ -53,9 +53,9 @@ public class DeleteMethodTest {
 
     @Test
     public void testDeleteMethod() {
-        System.out.println(Arrays.toString(family.getChildren()));
+        System.out.println(family.getChildren());
         assertFalse(family.deleteChild(10),
                 family.getChildren().toString());
-        System.out.println(Arrays.toString(family.getChildren()));
+        System.out.println(family.getChildren());
     }
 }

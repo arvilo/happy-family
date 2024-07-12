@@ -1,6 +1,8 @@
 package az.edu.turing.happyfamily;
 
-import az.edu.turing.happyfamily.Test.DeleteMethodTest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class Main {
     public static void showFamily(String name, Human mother, Human father
@@ -11,75 +13,31 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String[][] fatherSchedule = new String[10][2];
-        fatherSchedule[0][0] = DayOfWeek.MONDAY.name();
-        fatherSchedule[0][1] = "Wake up, breakfast, and morning routine";
+        HashMap<DayOfWeek, String> fatherSchedule = new HashMap<>();
+        fatherSchedule.put(DayOfWeek.MONDAY, "Wake up, breakfast, and morning routine");
+        fatherSchedule.put(DayOfWeek.TUESDAY, "Lunch break");
+        fatherSchedule.put(DayOfWeek.WEDNESDAY, "Exercise");
+        fatherSchedule.put(DayOfWeek.THURSDAY, "Work");
+        fatherSchedule.put(DayOfWeek.FRIDAY, "Wind down and prepare for bed");
+        fatherSchedule.put(DayOfWeek.SATURDAY, "Strength Training");
+        fatherSchedule.put(DayOfWeek.SUNDAY, "Yoga/Pilates");
 
-        fatherSchedule[1][0] = DayOfWeek.MONDAY.name();
-        fatherSchedule[1][1] = "Study";
-
-        fatherSchedule[2][0] = DayOfWeek.TUESDAY.name();
-        fatherSchedule[2][1] = "Lunch break";
-
-        fatherSchedule[3][0] = DayOfWeek.WEDNESDAY.name();
-        fatherSchedule[3][1] = "Exercise";
-
-        fatherSchedule[4][0] = DayOfWeek.WEDNESDAY.name();
-        fatherSchedule[4][1] = "Dinner";
-
-        fatherSchedule[5][0] = DayOfWeek.THURSDAY.name();
-        fatherSchedule[5][1] = "Personal projects/Leisure activities";
-
-        fatherSchedule[6][0] = DayOfWeek.FRIDAY.name();
-        fatherSchedule[6][1] = "Wind down and prepare for bed";
-
-        fatherSchedule[7][0] = DayOfWeek.SATURDAY.name();
-        fatherSchedule[7][1] = "Strength Training";
-
-        fatherSchedule[8][0] = DayOfWeek.SUNDAY.name();
-        fatherSchedule[8][1] = "Yoga/Pilates";
-
-        fatherSchedule[9][0] = DayOfWeek.WEDNESDAY.name();
-        fatherSchedule[9][1] = "Work";
-
-        Human father = new Human("Javid",
+        Man father = new Man("Javid",
                 "Aliyev",
                 1992,
                 94,
                 fatherSchedule);
 
-        String[][] motherSchedule = new String[10][2];
-        motherSchedule[0][0] = DayOfWeek.MONDAY.name();
-        motherSchedule[0][1] = "Lunch break";
+        HashMap<DayOfWeek, String> motherSchedule = new HashMap<>();
+        motherSchedule.put(DayOfWeek.MONDAY, "Lunch break");
+        motherSchedule.put(DayOfWeek.TUESDAY, "Exercise");
+        motherSchedule.put(DayOfWeek.WEDNESDAY, "Lunch break");
+        motherSchedule.put(DayOfWeek.THURSDAY, "Work");
+        motherSchedule.put(DayOfWeek.FRIDAY, "Study");
+        motherSchedule.put(DayOfWeek.SATURDAY, "Strength Training");
+        motherSchedule.put(DayOfWeek.SUNDAY, "Yoga/Pilates");
 
-        motherSchedule[1][0] = DayOfWeek.MONDAY.name();
-        motherSchedule[1][1] = "Exercise";
-
-        motherSchedule[2][0] = DayOfWeek.TUESDAY.name();
-        motherSchedule[2][1] = "Lunch break";
-
-        motherSchedule[3][0] = DayOfWeek.WEDNESDAY.name();
-        motherSchedule[3][1] = "Study";
-
-        motherSchedule[4][0] = DayOfWeek.WEDNESDAY.name();
-        motherSchedule[4][1] = "Personal projects/Leisure activities";
-
-        motherSchedule[5][0] = DayOfWeek.THURSDAY.name();
-        motherSchedule[5][1] = "Dinner";
-
-        motherSchedule[6][0] = DayOfWeek.FRIDAY.name();
-        motherSchedule[6][1] = "Strength Training";
-
-        motherSchedule[7][0] = DayOfWeek.SATURDAY.name();
-        motherSchedule[7][1] = "Wind down and prepare for bed";
-
-        motherSchedule[8][0] = DayOfWeek.SUNDAY.name();
-        motherSchedule[8][1] = "Wake up, breakfast, and morning routine";
-
-        motherSchedule[9][0] = DayOfWeek.WEDNESDAY.name();
-        motherSchedule[9][1] = "Yoga";
-
-        Human mother = new Human("Bahar",
+        Woman mother = new Woman("Bahar",
                 "Aliyeva",
                 1995,
                 90,
@@ -87,10 +45,8 @@ public class Main {
 
         Family family = new Family(mother, father);
 
-        String[][] child1Schedule = new String[1][2];
-
-        child1Schedule[0][0] = DayOfWeek.WEDNESDAY.name();
-        child1Schedule[0][1] = "Study";
+        HashMap<DayOfWeek, String> child1Schedule = new HashMap<>();
+        child1Schedule.put(DayOfWeek.WEDNESDAY, "Study");
 
         Human child1 = new Human("Vusal",
                 "Aliyev",
@@ -98,10 +54,8 @@ public class Main {
                 56,
                 child1Schedule);
 
-        String[][] child2Schedule = new String[1][2];
-
-        child2Schedule[0][0] = DayOfWeek.THURSDAY.name();
-        child2Schedule[0][1] = "Dinner";
+        HashMap<DayOfWeek, String> child2Schedule = new HashMap<>();
+        child2Schedule.put(DayOfWeek.THURSDAY, "Dinner");
 
         Human child2 = new Human("Vugar",
                 "Aliyev",
@@ -109,12 +63,11 @@ public class Main {
                 52,
                 child2Schedule);
 
-        String[][] child3Schedule = new String[1][2];
+        HashMap<DayOfWeek, String> child3Schedule = new HashMap<>();
+        child3Schedule.put(DayOfWeek.SUNDAY, "Work");
 
-        child3Schedule[0][0] = DayOfWeek.SUNDAY.name();
-        child3Schedule[0][1] = "Work";
 
-        Human child3 = new Human("Vusala",
+        Human child3 = new Woman("Vusala",
                 "Aliyeva",
                 2017,
                 52,
@@ -131,21 +84,19 @@ public class Main {
         family.addChild(child3);
         System.out.println(family);
 
-        String[] petHabits = new String[2];
-        petHabits[0] = "human biting";
-        petHabits[1] = "sleeping";
+        HashSet<String> petHabits = new HashSet<>();
+        petHabits.add("human biting");
+        petHabits.add("sleeping");
 
-//        Pet pet = new Pet(Species.CAT,
-//                "Kotlet",
-//                0,
-//                2,
-//                petHabits);
+        Pet pet = new DomesticCat("Kotlet",
+                0,
+                2,
+                petHabits);
 
         System.out.println("\nSetting pet");
-//        family.setPet(pet);
+        HashSet<Pet> pets = family.getPet();
+        pets.add(pet);
+        family.setPet(pets);
         System.out.println(family);
-
-
-
     }
 }

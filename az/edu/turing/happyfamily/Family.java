@@ -1,79 +1,68 @@
 package az.edu.turing.happyfamily;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
 
 public class Family {
 
-    private Human mother;
-    private Human father;
-    private Human[] children;
-    private Pet pet;
+    private Woman mother;
+    private Man father;
+    private ArrayList<Human> children;
+    private HashSet<Pet> pets;
 
 
-    public Family(Human mother, Human father) {
+    public Family(Woman mother, Man father) {
         if (mother != null && father != null) {
             this.mother = mother;
             this.father = father;
-            children = new Human[0];
+            children = new ArrayList<>();
+            pets = new HashSet<>();
         } else System.out.println("Mother or father can't be null");
     }
 
-    public Human getMother() {
+    public Woman getMother() {
         return mother;
     }
 
-    public void setMother(Human mother) {
+    public void setMother(Woman mother) {
         this.mother = mother;
     }
 
-    public Human getFather() {
+    public Man getFather() {
         return father;
     }
 
-    public void setFather(Human father) {
+    public void setFather(Man father) {
         this.father = father;
     }
 
-    public Human[] getChildren() {
+    public ArrayList<Human> getChildren() {
         return children;
     }
 
-    public void setChildren(Human[] children) {
+    public void setChildren(ArrayList<Human> children) {
         this.children = children;
     }
 
-    public Pet getPet() {
-        return pet;
+    public HashSet<Pet> getPet() {
+        return pets;
     }
 
-    public void setPet(Pet pet) {
-        this.pet = pet;
+    public void setPet(HashSet<Pet> pets) {
+        this.pets = pets;
     }
 
     public void addChild(Human child) {
-        Human[] children = new Human[this.children.length + 1];
-        for (int i = 0; i < this.children.length; i++)
-            children[i] = this.children[i];
-        children[children.length - 1] = child;
-        this.children = children;
+        children.add(child);
     }
 
     public boolean deleteChild(int index) {
-        if (index < 0 || index > children.length - 1) {
+        if (index < 0 || index > children.size() - 1) {
 
             return false;
         } else {
-            Human[] children = new Human[this.children.length - 1];
-            int j = 0;
-
-            for (int i = 0; i < this.children.length; i++) {
-                if (i != index) {
-                    children[j++] = this.children[i];
-                }
-            }
-
-            this.children = children;
+            children.remove(index);
 
             return true;
         }
@@ -89,14 +78,14 @@ public class Family {
     }
 
     public int countFamily() {
-        return 2 + children.length;
+        return 2 + children.size();
     }
 
     @Override
     public String toString() {
-        return String.format("Mother: %s\nFather: %s\nChildren:%sPet: %s",
+        return String.format("Mother: %s\nFather: %s\nChildren:%sPets: %s",
                 mother.getFullName(), father.getFullName()
-                , getChildrenInfo(),pet == null ? "" : pet.getNickname());
+                , getChildrenInfo(), pets.toString());
     }
 
     @Override

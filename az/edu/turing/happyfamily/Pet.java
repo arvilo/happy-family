@@ -1,15 +1,16 @@
 package az.edu.turing.happyfamily;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 public abstract class Pet {
     private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
-    private String[] habits;
+    private HashSet<String> habits;
 
-    public Pet(String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(String nickname, int age, int trickLevel, HashSet<String> habits) {
         this.species = Species.UNKNOWN;
         this.nickname = nickname;
         this.age = age;
@@ -18,7 +19,7 @@ public abstract class Pet {
     }
 
     public Pet(String nickname) {
-        this(nickname, 0, 0, new String[0]);
+        this(nickname, 0, 0, new HashSet<>());
     }
 
     public Pet() {
@@ -69,18 +70,18 @@ public abstract class Pet {
         else System.out.println("tricklevel should be in the range of 0-100");
     }
 
-    public String[] getHabits() {
+    public HashSet<String> getHabits() {
         return habits;
     }
 
-    public void setHabits(String[] habits) {
+    public void setHabits(HashSet<String> habits) {
         this.habits = habits;
     }
 
     @Override
     public String toString() {
         return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}",
-                species.name(), nickname, age, trickLevel, Arrays.toString(habits));
+                species.name(), nickname, age, trickLevel, habits.toString());
     }
 
     @Override

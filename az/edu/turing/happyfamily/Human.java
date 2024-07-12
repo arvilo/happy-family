@@ -1,6 +1,6 @@
 package az.edu.turing.happyfamily;
 
-import java.util.Arrays;
+import java.util.HashMap;
 
 public class Human {
     // remove irrelevant designers and methods
@@ -8,10 +8,10 @@ public class Human {
     private String surname;
     private int year;
     private int iq;
-    private String[][] schedule;
+    private HashMap<DayOfWeek, String> schedule;
     private Family family;
 
-    public Human(String name, String surname, int year, int iq, String[][] schedule) {
+    public Human(String name, String surname, int year, int iq, HashMap<DayOfWeek, String> schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -20,7 +20,7 @@ public class Human {
     }
 
     public Human(String name, String surname, int year) {
-        this(name, surname, year, 80, null);
+        this(name, surname, year, 80, new HashMap<>());
     }
 
     public Human() {
@@ -66,11 +66,11 @@ public class Human {
         else System.out.println("iq should be in the range of 0-100");
     }
 
-    public String[][] getSchedule() {
+    public HashMap<DayOfWeek, String> getSchedule() {
         return schedule;
     }
 
-    public void setSchedule(String[][] schedule) {
+    public void setSchedule(HashMap<DayOfWeek, String> schedule) {
         this.schedule = schedule;
     }
 
@@ -82,23 +82,10 @@ public class Human {
         this.family = family;
     }
 
-    private String showSchedule() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0;i < schedule.length; i++) {
-            if (i != 0) {
-                sb.append(", ");
-            }
-            sb.append(Arrays.toString(schedule[i]));
-        }
-        sb.append("]");
-        return sb.toString();
-    }
-
     @Override
     public String toString() {
         return String.format("Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}"
-                , name, surname, year,iq, Arrays.toString(schedule));
+                , name, surname, year, iq, schedule.toString());
     }
 
     @Override
