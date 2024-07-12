@@ -53,21 +53,21 @@ public class Family {
 
     public void addChild(Human child) {
         Human[] children = new Human[this.children.length + 1];
-        for (int i = 0;i < this.children.length;i++)
+        for (int i = 0; i < this.children.length; i++)
             children[i] = this.children[i];
         children[children.length - 1] = child;
+        this.children = children;
     }
 
     public boolean deleteChild(int index) {
         if (index < 0 || index > children.length - 1) {
 
             return false;
-        }
-        else {
+        } else {
             Human[] children = new Human[this.children.length - 1];
             int j = 0;
 
-            for (int i = 0; i < this.children.length;i++) {
+            for (int i = 0; i < this.children.length; i++) {
                 if (i != index) {
                     children[j++] = this.children[i];
                 }
@@ -82,8 +82,8 @@ public class Family {
     private String getChildrenInfo() {
         StringBuilder text = new StringBuilder();
         text.append("\n");
-        for (Human child: children) {
-            text.append(String.format("%s\n",child.getFullName()));
+        for (Human child : children) {
+            text.append(String.format("%s\n", child.getFullName()));
         }
         return text.toString();
     }
@@ -95,8 +95,8 @@ public class Family {
     @Override
     public String toString() {
         return String.format("Mother: %s\nFather: %s\nChildren:%sPet: %s",
-                mother.getFullName(),father.getFamily()
-                ,getChildrenInfo(),pet.getNickname());
+                mother.getFullName(), father.getFullName()
+                , getChildrenInfo(),pet == null ? "" : pet.getNickname());
     }
 
     @Override
@@ -120,5 +120,11 @@ public class Family {
     @Override
     public int hashCode() {
         return Objects.hash(mother, father);
+    }
+
+    @Override
+    public void finalize() throws Throwable {
+        System.out.println(this + "\nObject is removing");
+        super.finalize();
     }
 }

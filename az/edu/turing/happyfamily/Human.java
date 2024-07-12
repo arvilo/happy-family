@@ -9,7 +9,7 @@ public class Human {
     private int year;
     private int iq;
     private String[][] schedule;
-    private Family family; // hem family-de human tipinde deyisen var hem de human-da family tipinde deyisen bu problem olmaz?
+    private Family family;
 
     public Human(String name, String surname, int year, int iq, String[][] schedule) {
         this.name = name;
@@ -99,5 +99,11 @@ public class Human {
     public String toString() {
         return String.format("Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}"
                 , name, surname, year,iq, Arrays.toString(schedule));
+    }
+
+    @Override
+    public void finalize() throws Throwable {
+        System.out.println(this + "\nObject is removing");
+        super.finalize();
     }
 }
