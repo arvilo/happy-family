@@ -1,6 +1,7 @@
 package az.edu.turing.happyfamily;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 public class Human {
     // remove irrelevant designers and methods
@@ -84,8 +85,14 @@ public class Human {
 
     @Override
     public String toString() {
-        return String.format("Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}"
-                , name, surname, year, iq, schedule.toString());
+        return String.format(
+                "Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}"
+                , name, surname, year, iq,
+                Optional
+                        .ofNullable(schedule)
+                        .map(HashMap::toString)
+                        .orElseGet(String::new)
+        );
     }
 
     @Override

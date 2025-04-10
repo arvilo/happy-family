@@ -1,4 +1,4 @@
-package az.edu.turing.happyfamily.Test;
+package az.edu.turing.happyfamily;
 
 import az.edu.turing.happyfamily.*;
 import org.junit.jupiter.api.BeforeEach;
