@@ -5,7 +5,13 @@ import java.util.HashMap;
 public final class Woman
         extends Human {
 
-    public Woman(String name, String surname, int year, int iq, HashMap<DayOfWeek, String> schedule) {
+    public Woman(
+            String name,
+            String surname,
+            int year,
+            int iq,
+            HashMap<DayOfWeek, String> schedule
+    ) {
         super(name, surname, year, iq, schedule);
     }
 

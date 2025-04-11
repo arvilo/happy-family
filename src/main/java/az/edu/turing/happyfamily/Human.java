@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 public class Human {
-    // remove irrelevant designers and methods
+
     private String name;
     private String surname;
     private int year;
@@ -12,7 +12,13 @@ public class Human {
     private HashMap<DayOfWeek, String> schedule;
     private Family family;
 
-    public Human(String name, String surname, int year, int iq, HashMap<DayOfWeek, String> schedule) {
+    public Human(
+            String name,
+            String surname,
+            int year,
+            int iq,
+            HashMap<DayOfWeek, String> schedule
+    ) {
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -54,8 +60,11 @@ public class Human {
     }
 
     public void setYear(int year) {
-        if (year > 1850) this.year = year;
-        else System.out.println("Invalid year");
+        if (year > 1850) {
+            this.year = year;
+        } else {
+            System.out.println("Invalid year");
+        }
     }
 
     public int getIq() {
@@ -63,8 +72,11 @@ public class Human {
     }
 
     public void setIq(int iq) {
-        if (iq >= 0 && iq <= 100) this.iq = iq;
-        else System.out.println("iq should be in the range of 0-100");
+        if (iq >= 0 && iq <= 100) {
+            this.iq = iq;
+        } else {
+            System.out.println("iq should be in the range of 0-100");
+        }
     }
 
     public HashMap<DayOfWeek, String> getSchedule() {
@@ -86,8 +98,8 @@ public class Human {
     @Override
     public String toString() {
         return String.format(
-                "Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}"
-                , name, surname, year, iq,
+                "Human{name='%s', surname='%s', year=%d, iq=%d, schedule=%s}",
+                name, surname, year, iq,
                 Optional
                         .ofNullable(schedule)
                         .map(HashMap::toString)
@@ -96,7 +108,7 @@ public class Human {
     }
 
     @Override
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         System.out.println(this + "\nObject is removing");
         super.finalize();
     }

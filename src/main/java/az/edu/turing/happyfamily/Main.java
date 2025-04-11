@@ -1,14 +1,30 @@
 package az.edu.turing.happyfamily;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 public class Main {
-    public static void showFamily(String name, Human mother, Human father
-            , Human child, Pet pet) {
-        System.out.println("\n" + name + "\nMother: " + mother + "\nFather: " + father
-                + "\nChild: " + child + "\nPet: " + pet + "\n");
+    public static void showFamily(
+            String name,
+            Human mother,
+            Human father,
+            Human child,
+            Pet pet
+    ) {
+        System.out.printf(
+                "%n%s%nMother: %s%nFather: %s%nChild: %s%nPet: %s%n",
+                name,
+                mother.toString(),
+                father.toString(),
+                child.toString(),
+                pet.toString()
+        );
     }
 
     public static void main(String[] args) {
@@ -100,3 +116,46 @@ public class Main {
         System.out.println(family);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ class FileReader {
+
+    public static void readJavaFilesInFolder(String folderPath) {
+        File folder = new File(folderPath);
+        File[] listOfFiles = folder.listFiles((dir, name) -> name.endsWith(".java"));
+
+        if (listOfFiles != null && listOfFiles.length > 0) {
+            for (File file : listOfFiles) {
+                try {
+                    System.out.println("Reading file: " + file.getName());
+                    Files.lines(Paths.get(file.getAbsolutePath())).forEach(System.out::println);
+                    System.out.println("\n-----------------------------\n");
+                } catch (IOException e) {
+                    System.err.println("Error reading file " + file.getName() + ": " + e.getMessage());
+                }
+            }
+        } else {
+            System.out.println("No .java files found in the directory.");
+        }
+    }
+
+    public static void main(String[] args) {
+        // Verilən folder yolunu buraya əlavə edin
+
+        String folderPath = "src/main/java/az/edu/turing/happyfamily/controller";
+        readJavaFilesInFolder(folderPath);
+    }
+ }
