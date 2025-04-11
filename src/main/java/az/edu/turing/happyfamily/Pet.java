@@ -1,16 +1,21 @@
 package az.edu.turing.happyfamily;
 
-import java.util.Arrays;
 import java.util.HashSet;
 
 public abstract class Pet {
+
     private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private HashSet<String> habits;
 
-    public Pet(String nickname, int age, int trickLevel, HashSet<String> habits) {
+    public Pet(
+            String nickname,
+            int age,
+            int trickLevel,
+            HashSet<String> habits
+    ) {
         this.species = Species.UNKNOWN;
         this.nickname = nickname;
         this.age = age;
@@ -57,8 +62,11 @@ public abstract class Pet {
     }
 
     public void setAge(int age) {
-        if (age >= 0) this.age = age;
-        else System.out.println("age can't be less than zero");
+        if (age >= 0) {
+            this.age = age;
+        } else {
+            System.out.println("age can't be less than zero");
+        }
     }
 
     public int getTrickLevel() {
@@ -66,8 +74,11 @@ public abstract class Pet {
     }
 
     public void setTrickLevel(int trickLevel) {
-        if (trickLevel >= 0 && trickLevel <= 100) this.trickLevel = trickLevel;
-        else System.out.println("tricklevel should be in the range of 0-100");
+        if (trickLevel >= 0 && trickLevel <= 100) {
+            this.trickLevel = trickLevel;
+        } else {
+            System.out.println("tricklevel should be in the range of 0-100");
+        }
     }
 
     public HashSet<String> getHabits() {
@@ -80,12 +91,18 @@ public abstract class Pet {
 
     @Override
     public String toString() {
-        return String.format("%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}",
-                species.name(), nickname, age, trickLevel, habits.toString());
+        return String.format(
+                "%s{nickname='%s', age=%d, trickLevel=%d, habits=%s}",
+                species.name(),
+                nickname,
+                age,
+                trickLevel,
+                habits.toString()
+        );
     }
 
     @Override
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         System.out.println(this + "\nObject is removing");
         super.finalize();
     }

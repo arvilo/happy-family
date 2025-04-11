@@ -5,10 +5,12 @@ import java.util.HashSet;
 public class DomesticCat
         extends Pet {
 
-    public DomesticCat(String nickname,
-                       int age,
-                       int trickLevel,
-                       HashSet<String> habits) {
+    public DomesticCat(
+            String nickname,
+            int age,
+            int trickLevel,
+            HashSet<String> habits
+    ) {
         super(nickname, age, trickLevel, habits);
         setSpecies(Species.DOMESTICCAT);
     }
@@ -23,7 +25,7 @@ public class DomesticCat
 
     @Override
     public void respond() {
-        System.out.println("I am Cat. My name is " + getNickname() + ".");
+        System.out.printf("I am Cat. My name is %s.%n", getNickname());
     }
 
     @Override

@@ -11,14 +11,15 @@ public class Family {
     private ArrayList<Human> children;
     private HashSet<Pet> pets;
 
-
     public Family(Woman mother, Man father) {
         if (mother != null && father != null) {
             this.mother = mother;
             this.father = father;
             children = new ArrayList<>();
             pets = new HashSet<>();
-        } else System.out.println("Mother or father can't be null");
+        } else {
+            System.out.println("Mother or father can't be null");
+        }
     }
 
     public Woman getMother() {
@@ -83,9 +84,13 @@ public class Family {
 
     @Override
     public String toString() {
-        return String.format("Mother: %s\nFather: %s\nChildren:%sPets: %s",
-                mother.getFullName(), father.getFullName()
-                , getChildrenInfo(), pets.toString());
+        return String.format(
+                "Mother: %s\nFather: %s\nChildren:%sPets: %s",
+                mother.getFullName(),
+                father.getFullName(),
+                getChildrenInfo(),
+                pets.toString()
+        );
     }
 
     @Override
@@ -94,12 +99,10 @@ public class Family {
 
             return true;
         }
-
         if (o == null || getClass() != o.getClass()) {
 
             return false;
         }
-
         Family family = (Family) o;
 
         return Objects.equals(mother, family.mother) &&
@@ -112,7 +115,7 @@ public class Family {
     }
 
     @Override
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         System.out.println(this + "\nObject is removing");
         super.finalize();
     }
